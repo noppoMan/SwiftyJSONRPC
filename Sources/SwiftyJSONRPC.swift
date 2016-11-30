@@ -87,7 +87,7 @@ extension JSONRPCV2 {
             if let error = error {
                 json["error"].object = ["code": error.code, "message": error.message]
             } else if let result = result {
-                json["result"].object = result
+                json["result"].object = result.object
             }
             
             if let id = id?.number {

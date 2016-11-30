@@ -94,6 +94,7 @@ class SwiftyJSONRPCTests: XCTestCase {
         
         let json = response.toJSON().array
         XCTAssertEqual(json![0].dictionary!["id"]?.int, 1)
+        XCTAssertEqual(json![0].dictionary!["result"]!.array!, [1, 2])
         XCTAssertEqual(json![1].dictionary!["id"]?.int, 2)
     }
     
