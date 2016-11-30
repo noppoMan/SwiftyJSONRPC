@@ -2,8 +2,8 @@
 A JSON RPC Parser/Serializer For Swift
 
 ## Features
-- [x] Request Parser
-- [x] Response Serializer
+- [x] Request Parser/Serializer
+- [x] Response Parser/Serializer
 - [x] Batch Request/Response
 
 
@@ -29,10 +29,12 @@ let package = Package(
 import SwiftyJSONRPC
 
 let json: JSON = ["jsonrpc": "2.0", "id": 1, "method": "sum", "params": [1, 1]]
-let request = JSONRPCV2.validate(json)
+let request = JSONRPCV2.Request(json: json)
 
 print(request.isBatch) // false
 print(request.items.first?.id) // 1
+
+print(request.toJSON()) // SwiftyJSON.JSON type
 ```
 
 ### Batch
@@ -47,12 +49,14 @@ let json: JSON = [
     ["id": 2, "method": "mul", "params": [2, 2],
     ["jsonrpc": "2.0", "id": 3, "method": "div", "params": [4, 2]
 ]
-let request = JSONRPCV2.validate(json)
+let request = JSONRPCV2.Request(json: json)
 
 print(request.isBatch) // true
 print(request.items[0].id) // 1
 print(request.items[1].error) // invalidRequest
 print(request.items[2].id) // 3
+
+print(request.toJSON()) // SwiftyJSON.JSON type
 ```
 
 ## Response

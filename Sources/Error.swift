@@ -13,6 +13,7 @@ public enum JSONRPCV2Error: Error {
     case invalidParams
     case internalError
     case serverError
+    case raw(Int, String)
 }
 
 extension JSONRPCV2Error {
@@ -31,6 +32,8 @@ extension JSONRPCV2Error {
             return "Internal error"
         case .serverError:
             return "Server error"
+        case .raw(_, let msg):
+            return msg
         }
     }
     
@@ -48,6 +51,8 @@ extension JSONRPCV2Error {
             return -32603
         case .serverError:
             return -32000
+        case .raw(let code, _):
+            return code
         }
     }
     
