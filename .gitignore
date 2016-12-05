@@ -2,3 +2,7 @@
 /.build
 /Packages
 /*.xcodeproj
+Carthage
+Cartfile.resolved
+Xcode/SwiftyJSONRPC.xcodeproj/project.xcworkspace/xcuserdata/
+Xcode/SwiftyJSONRPC/SwiftyJSONRPC.xcodeproj/xcuserdata/
